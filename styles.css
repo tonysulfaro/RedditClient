@@ -1,0 +1,28 @@
+#content,
+html,
+body {
+    height: 90%;
+    background-color: #000000;
+}
+
+.wrap {
+    display: flex;
+}
+
+.box {
+    height: 90vh;
+    width: 50vw;
+    overflow: scroll;
+}
+
+header {
+    padding: 2em;
+}
+
+.card {
+    margin: 1em
+}
+
+.list-group {
+    margin: 0 1em 0 1em;
+}
