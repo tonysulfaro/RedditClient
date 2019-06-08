@@ -29,7 +29,7 @@ function getPosts() {
                 var post_card = `<div class="media bg-dark text-white" id="` +
                     post['id'] +
                     `" onclick="showPost()">
-  <img src="` + post['thumbnail'] + `" class="align-self-start mr-3" alt="..." id="` +
+  <img src="` + post['thumbnail'] + `" class="align-self-start mr-3" alt="tumbnail" id="` +
                     post['id'] +
                     `">
   <div class="media-body">
@@ -128,6 +128,11 @@ function showPost() {
     var id = event.target.id;
     showContent(id);
     getComments(id);
+}
+
+function toggleDarkMode() {
+    var items = document.getElementsByClassName("bg-dark");
+    console.log(items);
 }
 
 console.log("generating posts");
