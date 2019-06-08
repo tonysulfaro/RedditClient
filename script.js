@@ -5,10 +5,10 @@ function getPosts() {
     let url = "https://www.reddit.com/r/videos/hot.json?sort=top"
 
     fetch(url)
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
-        .then(function(myJson) {
+        .then(function (myJson) {
             console.log(myJson);
 
             // element where posts are going to go
@@ -19,26 +19,26 @@ function getPosts() {
             var posts = myJson['data']['children'];
 
             // generate cards for each post
-            posts.forEach(function(post) {
+            posts.forEach(function (post) {
                 post = post['data'];
 
                 // add post to global variable, yes not ideal but works
                 POSTS[post['id']] = post;
                 POSTS[post['id']]['comments'] = []
 
-                var post_card = `<div class="card text-white bg-dark">
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>` + post['title'] + `</p>
-                    <footer class="blockquote-footer">Posted ` + post['created'] + ` by <cite title="Source Title">` + post['author_fullname'] + `</cite>
-                    </footer>
-                </blockquote>
-            </div>
-            <div class="card-header">
-            Score: ` + post['score'] + `
-            </div>
-            <button id="` + post['id'] + `" type="button" class="btn btn-secondary" onclick="showPost()">View</button>
-        </div>`
+                var post_card = `<div class="media bg-dark text-white" id="` +
+                    post['id'] +
+                    `" onclick="showPost()">
+  <img src="` + post['thumbnail'] + `" class="align-self-start mr-3" alt="..." id="` +
+                    post['id'] +
+                    `">
+  <div class="media-body">
+    <h5 class="mt-0" id="` +
+                    post['id'] +
+                    `">` + post['title'] + `</h5>
+    <p>Sample text</p>
+  </div>
+</div>`;
 
                 featured_container.insertAdjacentHTML('beforeend', post_card);
             });
@@ -93,19 +93,19 @@ function getComments(post_id) {
     if (!POSTS[post_id]['comments'] === []) {
         // get comment data if not yet
         fetch(url)
-            .then(function(response) {
+            .then(function (response) {
                 return response.json();
             })
-            .then(function(myJson) {
+            .then(function (myJson) {
                 console.log(myJson);
-                myJson['data'].forEach(function(item) {
+                myJson['data'].forEach(function (item) {
                     commentData.push(item);
                 });
             });
 
         // data for comment exists, get it
     } else {
-        commentData.forEach(function(commentItem) {
+        commentData.forEach(function (commentItem) {
             console.log(commentItem);
 
             // comment item

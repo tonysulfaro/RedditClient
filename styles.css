@@ -1,7 +1,9 @@
 #content,
 html,
 body {
-    height: 90%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
     background-color: #000000;
 }
 
@@ -10,13 +12,13 @@ body {
 }
 
 .box {
-    height: 90vh;
+    height: 94vh;
     width: 50vw;
     overflow: scroll;
 }
 
 header {
-    padding: 1.5em;
+    margin: 0 0 50px 0;
 }
 
 .card {
@@ -25,4 +27,16 @@ header {
 
 .list-group {
     margin: 0 1em 0 1em;
+}
+
+.thumb-image {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+}
+
+.media {
+    padding: 1em;
+    margin: 1em;
+    border-radius: 5px;
 }
