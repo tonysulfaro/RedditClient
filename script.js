@@ -2,7 +2,7 @@ var POSTS = {}
 
 // get posts
 function getPosts() {
-    let url = "https://www.reddit.com/r/videos/hot.json?sort=top"
+    let url = "https://www.reddit.com/r/askreddit/hot.json?sort=top"
 
     fetch(url)
         .then(function (response) {
@@ -26,17 +26,24 @@ function getPosts() {
                 POSTS[post['id']] = post;
                 POSTS[post['id']]['comments'] = []
 
+                if (post['thumbnail'] == "") {
+                    var img_url = 'images/linkpng.png';
+                } else {
+                    img_url = post['thumbnail'];
+                }
+
                 var post_card = `<div class="media bg-dark text-white" id="` +
                     post['id'] +
                     `" onclick="showPost()">
-  <img src="` + post['thumbnail'] + `" class="align-self-start mr-3" alt="tumbnail" id="` +
+  <img src="` + img_url + `" class="align-self-start mr-3" alt="tumbnail" id="` +
                     post['id'] +
-                    `">
+                    `" height=50px;>
   <div class="media-body">
     <h5 class="mt-0" id="` +
                     post['id'] +
                     `">` + post['title'] + `</h5>
-    <p>Sample text</p>
+    <p>Author: ` + post['author'] + `</p>
+    <p>Score: ` + post['score'] + `</p>
   </div>
 </div>`;
 
@@ -56,15 +63,22 @@ function addPostContainer(post) {
 function showContent(id) {
     var postContent = document.getElementById('post-content');
 
-    let iframeContent = POSTS[id]['media_embed']['content']
-    iframeContent = iframeContent.replace("&lt;iframe", "");
-    iframeContent = iframeContent.replace("&gt;&lt;/iframe&gt;", "");
+    try {
+        let iframeContent = POSTS[id]['media_embed']['content']
+        iframeContent = iframeContent.replace("&lt;iframe", "");
+        iframeContent = iframeContent.replace("&gt;&lt;/iframe&gt;", "");
+        var iframe = `<iframe ` + iframeContent + `></iframe>`;
+    } catch {
+        console.log('not a video')
+        var iframe = ''
+    }
+
 
     let content = `<div class="card text-white bg-dark">
     <div class="card-body">
         <blockquote class="blockquote mb-0">
             <p>` + POSTS[id]['title'] + `</p>
-            <iframe ` + iframeContent + `></iframe>
+            ` + iframe + `
             <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
             </footer>
         </blockquote>
