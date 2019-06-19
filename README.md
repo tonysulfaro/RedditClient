@@ -2,6 +2,8 @@
 
 Bootstrap client for Reddit with split view similar to that of Apollo on the iPad.
 
+## Ok the way I started this is totally jank compared to what I learned in my webdev class recently. Spaghetti removal coming soon.
+
 ## Built With
 
 * [Bootstrap 4.3](https://getbootstrap.com/) - CSS framework
