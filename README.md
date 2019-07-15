@@ -9,6 +9,7 @@ Bootstrap client for Reddit with split view similar to that of Apollo on the iPa
 * [Bootstrap 4.3](https://getbootstrap.com/) - CSS framework
 * [Node JS](https://nodejs.org/) - server side code
 * [Vanilla JS](http://vanilla-js.com/) - client side code
+* [webpack](https://webpack.js.org/) - build tool
 
 ## Upcoming
 
