@@ -38,7 +38,7 @@ function getPosts() {
 
                 var post_card = `<div class="media bg-dark text-white" id="` +
                     post['id'] +
-                    `" onclick="showPost()">
+                    `" ">
   <img src="` + img_url + `" class="align-self-start mr-3" alt="tumbnail" id="` +
                     post['id'] +
                     `" height=50px;>
@@ -54,6 +54,7 @@ function getPosts() {
                 featured_container.insertAdjacentHTML('beforeend', post_card);
             });
             console.log(POSTS);
+            
         });
 }
 
