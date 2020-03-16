@@ -4,8 +4,9 @@
   "description": "Bootstrap client for Reddit with split view similar to that of Apollo on the iPad.",
   "main": "script.js",
   "dependencies": {
-    "webpack-cli": "^3.3.6",
-    "webpack": "^4.35.3"
+    "parcel": "^1.12.4",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
     "css-loader": "^3.0.0",
